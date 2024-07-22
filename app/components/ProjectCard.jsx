@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 function ProjectCard({
   name,
@@ -16,8 +19,16 @@ function ProjectCard({
   logo5,
 }) {
   return (
-    <div className="flex flex-row justify-center items-center mb-10 max-lg:flex-col max-lg:justify-start">
-      <div className="flex flex-col">
+    <div className="flex flex-row justify-between items-center mb-10 max-lg:flex-col max-lg:justify-start">
+      <motion.div
+        initial={{ x: -40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, transition: 1 }}
+        viewport={{
+          once: true,
+        }}
+        className="flex flex-col"
+      >
         <div className="text-[36px] text-[#101828] font-bold mb-10">{name}</div>
         <div className="text-[15px] text-[#101828] font-normal mb-10">
           {description}
@@ -65,10 +76,18 @@ function ProjectCard({
             <Image src={logo4} alt={name} />
           </div>
         </div>
-      </div>
-      <div className="mb-10">
+      </motion.div>
+      <motion.div
+        initial={{ x: 40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, transition: 1 }}
+        viewport={{
+          once: true,
+        }}
+        className="mb-10"
+      >
         <Image src={logo5} alt={name} />
-      </div>
+      </motion.div>
     </div>
   );
 }

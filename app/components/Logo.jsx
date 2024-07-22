@@ -4,18 +4,18 @@ import Image from "next/image";
 
 function Logo() {
   const list = [
-    { key: 1 },
-    { key: 2 },
-    { key: 3 },
-    { key: 4 },
-    { key: 5 },
-    { key: 6 },
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
   ];
 
   const renderImages = (count) => (
     <div className={`grid grid-cols-${count} gap-4`}>
       {list.slice(0, count).map((item) => (
-        <div key={item.key}>
+        <div key={item.id}>
           <Image src={Planet} alt="Planet" className="size-40" />
         </div>
       ))}
@@ -24,10 +24,10 @@ function Logo() {
 
   return (
     <>
-      <div className="block max-lg:hidden">{renderImages(6)}</div>
-      <div className="hidden max-lg:block max-md:hidden">{renderImages(4)}</div>
-      <div className="hidden max-md:block max-sm:hidden">{renderImages(3)}</div>
-      <div className="hidden max-sm:block">{renderImages(2)}</div>
+      <div className="block lg:hidden">{renderImages(2)}</div>
+      <div className="hidden lg:block xl:hidden">{renderImages(3)}</div>
+      <div className="hidden xl:block 2xl:hidden">{renderImages(4)}</div>
+      <div className="hidden 2xl:block">{renderImages(6)}</div>
     </>
   );
 }

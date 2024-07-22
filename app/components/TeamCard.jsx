@@ -1,11 +1,22 @@
+"use client";
+
 import React from "react";
 import team from "../assets/team.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function TeamCard() {
   return (
     <div className="flex flex-row justify-between gap-8 max-lg:flex-col max-lg:justify-center">
-      <div className="flex flex-col w-[50%] gap-8 max-lg:w-[100%]">
+      <motion.div
+        initial={{ x: -40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        viewport={{
+          once: true,
+        }}
+        className="flex flex-col w-[50%] gap-8 max-lg:w-[100%]"
+      >
         <div className="text-[#101828] text-[36px] font-bold max-sm:text-center">
           Our team
         </div>
@@ -40,14 +51,22 @@ function TeamCard() {
           our staff. We hire the best specialists in the market. It{"'"}s
           expensive but worth it
         </div>
-      </div>
-      <div className="w-[50%] max-lg:w-[100%] flex items-center">
+      </motion.div>
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+        viewport={{
+          once: true,
+        }}
+        className="w-[50%] max-lg:w-[100%] flex items-center"
+      >
         <Image
           src={team}
           alt="team"
           className="rounded-xl shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px]"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

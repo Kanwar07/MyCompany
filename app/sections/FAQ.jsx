@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import FAQAccordion from "../components/FAQAccordion";
+import { motion } from "framer-motion";
 
 function FAQ() {
   const list = [
@@ -26,7 +29,15 @@ function FAQ() {
   ];
   return (
     <div className="px-[10%] py-[10%]">
-      <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-8">
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        viewport={{
+          once: true,
+        }}
+        className="grid grid-cols-2 max-lg:grid-cols-1 gap-8"
+      >
         {list.map((item) => {
           const { id, question, ans } = item;
           return (
@@ -35,7 +46,7 @@ function FAQ() {
             </div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 }

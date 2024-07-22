@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Analysis from "../assets/Analysis.png";
 import Design from "../assets/Design.png";
@@ -14,6 +16,7 @@ import six from "../assets/six.png";
 import Image from "next/image";
 import AppDevelopmentCard from "../components/AppDevelopmentCard";
 import DevelopmentPhone from "../assets/DevelopmentPhone.png";
+import { motion } from "framer-motion";
 
 function AppDevelopment() {
   let developmentlist = [
@@ -70,7 +73,15 @@ function AppDevelopment() {
   return (
     <>
       <div className="flex flex-row justify-end items-center px-[10%] max-xl:flex-col">
-        <div className="grid grid-cols-1 max-lg:mt-10">
+        <motion.div
+          initial={{ x: -40, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{
+            once: true,
+          }}
+          className="grid grid-cols-1 max-lg:mt-10"
+        >
           {developmentlist.slice(0, 3).map((item) => {
             const { id, description, image, name, number } = item;
             return (
@@ -79,11 +90,26 @@ function AppDevelopment() {
               </div>
             );
           })}
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{
+            once: true,
+          }}
+        >
           <Image src={DevelopmentPhone} alt="DevelopmentPhone" />
-        </div>
-        <div className="grid grid-cols-1 max-lg:mb-10">
+        </motion.div>
+        <motion.div
+          initial={{ x: 40, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          viewport={{
+            once: true,
+          }}
+          className="grid grid-cols-1 max-lg:mb-10"
+        >
           {developmentlist.slice(3, 6).map((item) => {
             const { id, description, image, name, number } = item;
             return (
@@ -92,7 +118,7 @@ function AppDevelopment() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </>
   );

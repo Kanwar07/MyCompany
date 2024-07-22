@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 function Technologies() {
   const webSkills = [
@@ -40,7 +43,18 @@ function Technologies() {
       </div>
       <div className="mb-4 flex flex-col">
         <div className="text-[#101828] text-[20px] mb-2">Web</div>
-        <div className="flex flex-row flex-wrap">
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{
+            ease: "easeInOut",
+            duration: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="flex flex-row flex-wrap"
+        >
           {webSkills.map((item) => {
             const { id, tech } = item;
             return (
@@ -52,11 +66,22 @@ function Technologies() {
               </button>
             );
           })}
-        </div>
+        </motion.div>
       </div>
       <div className="mb-4 flex flex-col">
         <div className="text-[#101828] text-[20px] mb-2">Mobile</div>
-        <div className="flex flex-row flex-wrap">
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{
+            ease: "easeInOut",
+            duration: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="flex flex-row flex-wrap"
+        >
           {mobileSkills.map((item) => {
             const { id, tech } = item;
             return (
@@ -68,7 +93,7 @@ function Technologies() {
               </button>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

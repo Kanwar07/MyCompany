@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Social from "../assets/Social.png";
 import Education from "../assets/Education.png";
@@ -15,6 +17,7 @@ import Game from "../assets/Game.png";
 import Marketplaces from "../assets/Marketplaces.png";
 import OnlineCources from "../assets/OnlineCources.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function Industries() {
   const list = [
@@ -22,7 +25,7 @@ function Industries() {
     { id: 2, name: "Education", image: Education },
     { id: 3, name: "AR technology", image: AR },
     { id: 4, name: "Fitness and sport", image: Fitness },
-    { id: 5, name: "Fitness and sport", image: Auto },
+    { id: 5, name: "Auto, transport", image: Auto },
     { id: 6, name: "TV series", image: TV },
     { id: 7, name: "Bank", image: Bank },
     { id: 8, name: "Medicine, health", image: Medicine },
@@ -35,12 +38,44 @@ function Industries() {
     { id: 15, name: "Online courses", image: OnlineCources },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+      }}
+      className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1"
+    >
       {list.map((item) => {
         const { id, name, image } = item;
         return (
-          <button key={id} className="flex flex-row items-center">
+          <motion.button
+            key={id}
+            variants={itemVariants}
+            className="flex flex-row items-center"
+          >
             <div className="size-8 mr-4">
               <Image
                 src={image}
@@ -49,10 +84,10 @@ function Industries() {
               />
             </div>
             <div>{name}</div>
-          </button>
+          </motion.button>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
 

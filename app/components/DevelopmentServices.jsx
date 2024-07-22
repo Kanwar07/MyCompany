@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import arrow from "../assets/arrow.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function DevelopmentServices() {
   const list = [
@@ -17,14 +20,25 @@ function DevelopmentServices() {
       {list.map((item) => {
         const { id, name } = item;
         return (
-          <div key={id}>
+          <motion.div
+            initial={{ x: -100, scale: 0 }}
+            whileInView={{ x: 0, scale: 1 }}
+            transition={{
+              ease: "easeInOut",
+              duration: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            key={id}
+          >
             <button className="flex flex-row items-center hover:underline hover:decoration-solid decoration-[#80A948]">
               <div className="mr-2">{name}</div>
               <div>
                 <Image src={arrow} alt="arrow" />
               </div>
             </button>
-          </div>
+          </motion.div>
         );
       })}
     </div>
