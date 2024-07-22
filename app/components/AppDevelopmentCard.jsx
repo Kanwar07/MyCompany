@@ -13,7 +13,7 @@ function AppDevelopmentCard({ description, image, name, number }) {
           {description}
         </div>
       </div>
-      <Image src={number} alt="number" className="size-2" />
+      <Image src={number} alt="number" />
     </div>
   );
 }
